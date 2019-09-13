@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.5.js"></script>
+  <script src="cordova.js"></script>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div data-role="page" id="pageone" data-theme="a">
+    <!-- header -->
+    <div data-role="header">
+      <h1>Simple Calculator App</h1>
+
+<!-- navbar -->
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a> </li>
+          <li><a href="#pagefour" data-icon="info">Help</a> </li>
+        </ul>
+      </div>
+  </div>
+  <!-- header end -->
+<!-- main -->
+  <div data-role="main" class="ui-content">
+    <p>This is a jQuery mobile exercise which provides the user with a calculator
+    for basic mathematical operations.</p>
+  </div>
+  <!-- main end -->
+
+  <div data-role="footer">
+    <h2>Homework</h2>
+  </div>
+  </div>
+  <!-- Page 1 End -->
+  <!-- Page 2 -->
+  <div data-role="page" id="pagetwo" data-theme="a">
+    <!-- header -->
+    <div data-role="header">
+      <h1>Simple Calculator App</h1>
+
+<!-- navbar -->
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a> </li>
+          <li><a href="#pagethree" data-icon="info">Help</a> </li>
+        </ul>
+      </div>
+  </div>
+  <!-- header end -->
+
+<!-- main -->
+  <div data-role="main" class="ui-content">
+    <form method="post" action="demoform.asp">
+<input type="text" name="value1" id="value1" data-clear-btn="true">
+
+  <select name="operation" id="operation">
+<option value="1">+</option>
+<option value="2">-</option>
+<option value="3">x</option>
+<option value="4">÷</option>
+</select>
+
+<input type="text" name="value2" id="value2" data-clear-btn="true">
+<p><a href="#pagefour" class="ui-btn" id="calculate">Calculate</a> </p>
+<!-- <input type="submit" name="calculate" id="calculate" value="Calculate"> -->
+</form>
+  </div>
+  <!-- main end -->
+
+  <div data-role="footer">
+    <h2>Homework</h2>
+  </div>
+  </div>
+  <!-- Page 2 End -->
+
+<!-- Page 3 -->
+  <div data-role="page" id="pagethree" data-theme="a">
+    <!-- header -->
+    <div data-role="header">
+      <h1>Simple Calculator App</h1>
+
+<!-- navbar -->
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a> </li>
+          <li><a href="#pagethree" data-icon="info">Help</a> </li>
+        </ul>
+      </div>
+  </div>
+  <!-- header end -->
+<!-- main -->
+  <div data-role="main" class="ui-content">
+    <p>This is the help section and provides basic information about how to use the calculator.</p>
+<a href="#pageinfo" class="ui-btn ui-icon-info ui-btn-icon-left">More Info</a>
+  </div>
+  <!-- main end -->
+
+  <div data-role="footer">
+    <h2>Homework</h2>
+  </div>
+  </div>
+  <!-- Page 3 End -->
+
+<!-- Results Page -->
+  <div data-role="page" id="pagefour" data-theme="a">
+    <!-- header -->
+    <div data-role="header">
+      <h1>Results</h1>
+
+<!-- navbar -->
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a> </li>
+          <li><a href="#pagethree" data-icon="info">Help</a> </li>
+        </ul>
+      </div>
+  </div>
+  <!-- header end -->
+<!-- main -->
+  <div data-role="main" class="ui-content">
+    <h2>Operation:</h2>
+    <span id="v1">value1 </span><span id="op1"> operation </span><span id="v2">value2</span>
+<h2>Result:</h2>
+<p id="rslt"></p>
+
+<a href="#pagetwo" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
+
+  </div>
+
+  <!-- main end -->
+
+  <div data-role="footer">
+    <h2>Homework</h2>
+  </div>
+  </div>
+
+<!-- Info Page -->
+<div data-role="page" data-dialog="true" id="pageinfo" data-theme="a">
+  <!-- header -->
+  <div data-role="header">
+    <h1>More Info</h1>
+
+</div>
+<!-- header end -->
+<!-- main -->
+<div data-role="main" class="ui-content">
+  <p>You have requested more information about the App!</p>
+<a href="#pagethree" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Dismiss</a>
+</div>
+<!-- main end -->
+
+</div>
+
+
+
+</body>
+
+<script>
+$(document).ready(function(){
+$("#calculate").on("click",function(){
+window.location.href = "#pagefour";
+
+
+ var n1 = parseInt($("#value1").val());
+ var n2 = parseInt($("#value2").val());
+ // var result
+
+var op = parseInt($("#operation").val());
+switch (op) {
+  case 1:
+  var result = n1 + n2;
+  $("#v1").text("" + n1);
+  $("#op1").text("+");
+  $("#v2").text("" + n2);
+  $("#rslt").text("" + result);
+    // alert("Result= " + result);
+    // return false;
+    break;
+
+    case 2:
+    var result = n1 - n2;
+    $("#v1").text("" + n1);
+    $("#op1").text("-");
+    $("#v2").text("" + n2);
+    $("#rslt").text("" + result);
+      // alert("Result= " + result);
+      // return false;
+      break;
+
+      case 3:
+      var result = n1 * n2;
+      $("#v1").text("" + n1);
+      $("#op1").text("x");
+      $("#v2").text("" + n2);
+      $("#rslt").text("" + result);
+        // alert("Result= " + result);
+        // return false;
+        break;
+
+        case 4:
+        var result = n1 / n2;
+        $("#v1").text("" + n1);
+        $("#op1").text("÷");
+        $("#v2").text("" + n2);
+        $("#rslt").text("" + result);
+          // alert("Result= " + result);
+          // return false;
+          break;
+  default:
+
+}
+});
+});
+</script>
+</html>
